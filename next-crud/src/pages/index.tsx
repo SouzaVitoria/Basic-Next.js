@@ -1,4 +1,5 @@
 import Button from "../components/Button";
+import Form from "../components/Form";
 import Layout from "../components/Layout";
 import Table from "../components/Table";
 import Client from "../core/Client";
@@ -19,18 +20,19 @@ export default function Home() {
   }
 
   return (
-    <div className="flex h-screen justify-center items-center bg-gradient-to-r from-purple-500 via-orange-400 to-blue-600 ">
+    <div className="flex h-screen justify-center items-center bg-gradient-to-r from-purple-500 via-orange-400 to-blue-600">
       <Layout title="Cadastro Simples">
         <div className="flex justify-end">
           <Button color="blue" className="mb-4">
             Novo Cliente
           </Button>
         </div>
-        <Table
+        {/* <Table
           clients={clients}
           selectClient={selectClient}
           deleteClient={deleteClient}
-        />
+        /> */}
+        <Form client={clients[2]} />
       </Layout>
     </div>
   );
