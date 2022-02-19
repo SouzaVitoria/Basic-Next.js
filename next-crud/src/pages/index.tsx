@@ -7,6 +7,7 @@ import Client from "../core/Client";
 
 export default function Home() {
   const [visible, setVisible] = useState<"table" | "form">("table");
+  const [client, setClient] = useState<Client>(Client.empty());
   const clients = [
     new Client("Vitória", 21, "1"),
     new Client("Vitória Souza", 22, "2"),
@@ -15,7 +16,8 @@ export default function Home() {
   ];
 
   function selectClient(client: Client) {
-    console.log("selected", client);
+    setClient(client);
+    setVisible("form");
   }
   function deleteClient(client: Client) {
     console.log("deleted", client);
@@ -26,17 +28,18 @@ export default function Home() {
     setVisible("table");
   }
 
+  function newClient() {
+    setClient(Client.empty());
+    setVisible("form");
+  }
+
   return (
     <div className="flex h-screen justify-center items-center bg-gradient-to-r from-purple-500 via-orange-400 to-blue-600">
       <Layout title="Cadastro Simples">
         {visible === "table" ? (
           <>
             <div className="flex justify-end">
-              <Button
-                color="blue"
-                className="mb-4"
-                onClick={() => setVisible("form")}
-              >
+              <Button color="blue" className="mb-4" onClick={newClient}>
                 Novo Cliente
               </Button>
             </div>
@@ -48,7 +51,7 @@ export default function Home() {
           </>
         ) : (
           <Form
-            client={clients[2]}
+            client={client}
             canceled={() => setVisible("table")}
             editClient={saveClient}
           />
