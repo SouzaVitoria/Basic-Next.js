@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Button from "../components/Button";
 import Form from "../components/Form";
 import Layout from "../components/Layout";
@@ -5,6 +6,7 @@ import Table from "../components/Table";
 import Client from "../core/Client";
 
 export default function Home() {
+  const [visible, setVisible] = useState<"table" | "form">("table");
   const clients = [
     new Client("Vitória", 21, "1"),
     new Client("Vitória Souza", 22, "2"),
@@ -19,20 +21,38 @@ export default function Home() {
     console.log("deleted", client);
   }
 
+  function saveClient(client: Client) {
+    console.log(client);
+    setVisible("table");
+  }
+
   return (
     <div className="flex h-screen justify-center items-center bg-gradient-to-r from-purple-500 via-orange-400 to-blue-600">
       <Layout title="Cadastro Simples">
-        <div className="flex justify-end">
-          <Button color="blue" className="mb-4">
-            Novo Cliente
-          </Button>
-        </div>
-        {/* <Table
-          clients={clients}
-          selectClient={selectClient}
-          deleteClient={deleteClient}
-        /> */}
-        <Form client={clients[2]} />
+        {visible === "table" ? (
+          <>
+            <div className="flex justify-end">
+              <Button
+                color="blue"
+                className="mb-4"
+                onClick={() => setVisible("form")}
+              >
+                Novo Cliente
+              </Button>
+            </div>
+            <Table
+              clients={clients}
+              selectClient={selectClient}
+              deleteClient={deleteClient}
+            />
+          </>
+        ) : (
+          <Form
+            client={clients[2]}
+            canceled={() => setVisible("table")}
+            editClient={saveClient}
+          />
+        )}
       </Layout>
     </div>
   );
