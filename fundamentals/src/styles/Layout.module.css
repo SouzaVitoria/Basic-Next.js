@@ -1,0 +1,22 @@
+.layoutContent {
+  padding: 20px;
+  background: red;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.layoutHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.layoutHeader:hover {
+  opacity: 75%;
+}
+
+.layoutHeader a {
+  margin-left: 2px;
+}
