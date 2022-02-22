@@ -11,7 +11,7 @@ Esse repositório **Basic Next.js** foi criado afins de estudos sobre NEXT.js. C
 1. Clone o repositório
    `git clone https://github.com/SouzaVitoria/Basic-Next.js.git`
 
-2. Selecione qual a branch que gostaria de ver, _fundamentals_, _Next com CRUDE_, etc.
+2. Selecione qual a branch que gostaria de ver, _fundamentals_, _Next com CRUD_, etc.
 
 3. Para rodar o projeto, entre na pasta e rode `npm run dev` no terminal
 
