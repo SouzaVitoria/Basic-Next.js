@@ -9,7 +9,6 @@ interface TableProps {
 
 export default function Table(props: TableProps) {
   const showActions = props.selectClient || props.deleteClient;
-
   function renderHeader() {
     return (
       <tr>
